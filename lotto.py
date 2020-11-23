@@ -26,6 +26,7 @@ def main():
                         break
                     else:
                         tickets_quantity = input('Invalid selection! Retry\nselected: ')
+                # exception occurred in case the user insert literal value
                 except ValueError:
                     tickets_quantity = input('Invalid choice! Choose number from 1 to %s. Press 0 to quit.\t' % max_tickets)
 
@@ -35,7 +36,7 @@ def main():
         for ticket in tickets:
             ticket.print_ticket()
 
-        other_tickets = input('Press 0 to quit or press any other key to generate new tickets')
+        other_tickets = input('Press 0 to quit or press any other key to generate new tickets.\t')
         if other_tickets == '0':
             quit()
 

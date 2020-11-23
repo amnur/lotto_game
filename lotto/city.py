@@ -7,8 +7,8 @@ class City:
     @staticmethod
     def choose_city_code():
         # start to select the city
-        # city_code represent the index used to access to the desired city in the class City
         City.print_cities()
+        # city_code represent the index used to access to the desired city in the class City
         city_code = input('\nSelect the desired city.\t')
         # loop used to check the validity of the current city_code
         while True:

@@ -7,8 +7,8 @@ class Bet:
     @staticmethod
     def choose_bet_type_code():
         # start to select the bet type
-        # bet_type represent the index used to access to the desired bet type in the class Bet
         Bet.print_bet_types()
+        # bet_type represent the index used to access to the desired bet type in the class Bet
         bet_type = input('\nSelect the desired bet type.\t')
         # loop used to check the validity of the current bet_type
         while True:
