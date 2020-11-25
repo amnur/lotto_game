@@ -1,5 +1,5 @@
 import argparse
-from lotto.tickets_generator import tickets_generator
+from lotto.lotto import Lotto
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
         print('\n\n{::^50}'.format(' WELCOME TO THE ITALIAN LOTTO GAME '))
         # check if the user has choose correctly the amount of tickets to generate
         if tickets_quantity is None or tickets_quantity < 0 or tickets_quantity > max_tickets:
-            tickets_quantity = input(f'\nSelect the amount of tickets to generate (max {max_tickets}).\nPress 0 to quit.\t')
+            tickets_quantity = input(f'\nSelect the amount of tickets to generate(max {max_tickets}).\nPress 0 to quit.\t')
             while True:
                 try:
                     if int(tickets_quantity) == 0:
@@ -31,9 +31,9 @@ def main():
                     tickets_quantity = input('Invalid choice! Choose number from 1 to %s. Press 0 to quit.\t' % max_tickets)
 
         # tickets_generator return a list of Ticket objects
-        tickets = tickets_generator(tickets_quantity)
+        lotto = Lotto(tickets_quantity)
 
-        for ticket in tickets:
+        for ticket in lotto.tickets:
             ticket.print_ticket()
 
         other_tickets = input('Press 0 to quit or press any other key to generate new tickets.\t')
