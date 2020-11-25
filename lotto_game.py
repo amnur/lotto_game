@@ -37,10 +37,10 @@ def main():
         for ticket in lotto.tickets:
             ticket.print_ticket()
 
-        see_extraction = input('Press any key to see the extraction.\t')
+        input('Press any key to see the extraction.\t')
 
-        extacted = Extraction()
-        extacted.print_extracted()
+        extraction = Extraction()
+        extraction.print_extracted()
 
         other_tickets = input('Press 0 to quit or press any other key to generate new tickets.\t')
         if other_tickets == '0':
