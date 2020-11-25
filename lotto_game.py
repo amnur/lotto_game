@@ -1,5 +1,6 @@
 import argparse
 from lotto.lotto import Lotto
+from lotto.extraction import Extraction
 
 
 def main():
@@ -35,6 +36,9 @@ def main():
 
         for ticket in lotto.tickets:
             ticket.print_ticket()
+
+        extact = Extraction()
+        print(extact.table.items())
 
         other_tickets = input('Press 0 to quit or press any other key to generate new tickets.\t')
         if other_tickets == '0':
