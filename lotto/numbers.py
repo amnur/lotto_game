@@ -11,4 +11,4 @@ class Numbers:
         while len(self.generated_numbers) < quantity_to_generate:
             new_number = random.randint(1, 90)
             if new_number not in self.generated_numbers:
-                self.generated_numbers.append(str(new_number))
+                self.generated_numbers.append(new_number)

@@ -17,5 +17,5 @@ class Ticket:
         print(table_line)
         print('|{:^48}|'.format('City: ' + self.city.selected_city.upper()))
         print('|{:^48}|'.format('Bet type: ' + self.bet_type.selected_bet_type.upper()))
-        print('|{:^48}|'.format(' '.join(self.generated_numbers.generated_numbers)))
+        print('|{:^48}|'.format(' '.join([str(x) for x in self.generated_numbers.generated_numbers])))
         print(table_line)
