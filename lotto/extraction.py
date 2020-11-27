@@ -26,6 +26,7 @@ class Extraction:
         print(extraction_table_line)
 
     def results(self, tickets):
+        won = False
         for ticket in tickets:
             if ticket.city.selected_city.lower() == 'tutte':
                 win_dict = {}
@@ -51,8 +52,10 @@ class Extraction:
                     print('|{:^48}|'.format((' '.join(str(x) for x in win_dict[city]))))
                     print('+{:-^48}+'.format(''))
                     print()
-
-
-
-
-
+                    won = True
+        if not won:
+            print_line = '+' + '-' * 48 + '+'
+            print()
+            print(print_line)
+            print('+{:^48}+'.format('YOU LOSE!'))
+            print(print_line)
