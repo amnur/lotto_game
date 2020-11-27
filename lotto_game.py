@@ -34,20 +34,23 @@ def main():
         # tickets_generator return a list of Ticket objects
         lotto = Lotto(tickets_quantity)
 
+        print('{::^50}'.format('  HERE ARE YOUR TICKETS  '))
+        print()
+
         for ticket in lotto.tickets:
             ticket.print_ticket()
 
-        input('Press any key to see the extraction.\t')
+        input('\nPress any key to see the extraction.\t')
 
         extraction = Extraction()
         extraction.print_extracted()
 
-        input('Press any key to see winner tickets.\t')
+        input('\nPress any key to see winner tickets.\t')
 
         for ticket in lotto.tickets:
             extraction.results(ticket)
 
-        other_tickets = input('Press 0 to quit or press any other key to generate new tickets.\t')
+        other_tickets = input('\nPress 0 to quit or press any other key to generate new tickets.\t')
         if other_tickets == '0':
             quit()
 
