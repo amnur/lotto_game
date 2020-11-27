@@ -9,8 +9,8 @@ class Ticket:
         self.bet_type = Bet(bet_type_code)
         self.generated_numbers = Numbers(quantity_to_generate)
 
-
     def print_ticket(self):
+        print()
         table_line = '+'+'-'*48+'+'
         print(table_line)
         print('|{:^48}|'.format('TICKET'))
