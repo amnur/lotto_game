@@ -1,5 +1,6 @@
 class City:
-    city_list = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano', 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia']
+    city_list = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano',
+                 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia', 'Tutte']
 
     def __init__(self, city_code):
         self.selected_city = City.city_list[city_code-1]
