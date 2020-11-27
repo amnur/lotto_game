@@ -35,7 +35,6 @@ def main():
         lotto = Lotto(tickets_quantity)
 
         print('{::^50}'.format('  HERE ARE YOUR TICKETS  '))
-        print()
 
         for ticket in lotto.tickets:
             ticket.print_ticket()
