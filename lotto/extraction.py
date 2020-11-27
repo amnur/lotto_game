@@ -20,6 +20,7 @@ class Extraction:
         print('|{:^48}|'.format('EXTRACTION'))
         print(extraction_table_line)
         for city in self.table.keys():
+            # transform the extracted list to string
             extracted_str = ' '.join([str(x) for x in self.table[city].generated_numbers])
             print('|  {:<10}{:^7}{:^7}{:^7}{:^7}{:^7} |'.format(city, *extracted_str.split()))
         print(extraction_table_line)
@@ -45,8 +46,8 @@ class Extraction:
                 print()
                 print(' {::^48} '.format('  CONGRATULATIONS! YOU WIN!  '))
                 ticket.print_ticket()
-                print('+{:^48}+'.format('WINNER CITY : '+city))
-                print('+{:^48}+'.format((' '.join(str(x) for x in win_dict[city]))))
+                print('|{:^48}|'.format('WINNER CITY : '+city))
+                print('|{:^48}|'.format((' '.join(str(x) for x in win_dict[city]))))
                 print('+{:-^48}+'.format(''))
                 print()
 
