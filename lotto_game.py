@@ -46,8 +46,7 @@ def main():
 
         input('\nPress any key to see winner tickets.\t')
 
-        for ticket in lotto.tickets:
-            extraction.results(ticket)
+        extraction.results(lotto.tickets)
 
         other_tickets = input('\nPress 0 to quit or press any other key to generate new tickets.\t')
         if other_tickets == '0':
