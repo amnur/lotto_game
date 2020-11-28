@@ -19,4 +19,6 @@ class Ticket:
         print('|{:^48}|'.format('Bet type: ' + self.bet_type.selected_bet_type.upper()))
         # transform list elements from integer to string and transform this list to string using join
         print('|{:^48}|'.format(' '.join([str(x) for x in self.generated_numbers.generated_numbers])))
+        print('|{:^48}|'.format('-- -- --'))
+        print('|{:^48}|'.format(str(self.amount_wagered)+' €'))
         print(table_line)
