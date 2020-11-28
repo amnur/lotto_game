@@ -1,6 +1,7 @@
 from lotto.city import City
 from lotto.numbers import Numbers
 from lotto.bet import Bet
+from lotto.fee import Fee
 
 
 class Extraction:
@@ -45,8 +46,10 @@ class Extraction:
                 win_dict[ticket.city.selected_city] = win_list
             for city in win_dict.keys():
                 if len(win_dict[city]) > Bet.bet_type_list.index(ticket.bet_type.selected_bet_type):
+                    payout = Fee.calculate_payout(ticket)
                     print()
                     print(' {::^48} '.format('  CONGRATULATIONS! YOU WIN!  '))
+                    print(' {:^48} '.format(str(round(payout, 2))+' $'))
                     ticket.print_ticket()
                     print('|{:^48}|'.format('WINNER CITY : '+city))
                     print('|{:^48}|'.format((' '.join(str(x) for x in win_dict[city]))))
