@@ -4,10 +4,11 @@ from lotto.numbers import Numbers
 
 
 class Ticket:
-    def __init__(self, city_code, bet_type_code, quantity_to_generate):
+    def __init__(self, city_code, bet_type_code, quantity_to_generate, amount_wagered):
         self.city = City(city_code)
         self.bet_type = Bet(bet_type_code)
         self.generated_numbers = Numbers(quantity_to_generate)
+        self.amount_wagered = amount_wagered
 
     def print_ticket(self):
         print()

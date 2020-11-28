@@ -53,8 +53,28 @@ class Lotto:
                 except ValueError:
                     number_quantity = input(f'Invalid choice! Choose number from {bet_type_code} to {max_number}.\t')
 
+            # calculate max fee allowed
             max_fee_allowed = Fee.max_fee_allowed(city_code, bet_type_code, number_quantity)
+
+            # SELECT AMOUNT TO BET
+            print('\nHow much do you want to bet?')
+            amount_wagered = input('\nMaximum allowed for this bet is {max_fee_allowed}\t')
+            # loop used to check the validity of the current number_quantity
+            while True:
+                # number_quantity conversion to int type
+                try:
+                    if 1 <= int(amount_wagered) <= max_fee_allowed:
+                        amount_wagered = int(amount_wagered)
+                        print(horizontal_line)
+                        print()
+                        break
+                    else:
+                        amount_wagered = input(f'Invalid choice! Must choose from 1 to {max_fee_allowed}.\t')
+                # exception occurred selecting a non numerical value
+                except ValueError:
+                    amount_wagered = input(f'Invalid choice! Choose number from 1 to {max_fee_allowed}.\t')
+
             print(max_fee_allowed)
 
             # CREATE A TICKET OBJECT AND INSERT IT IN THE LIST
-            self.tickets.append(Ticket(city_code, bet_type_code, number_quantity))
+            self.tickets.append(Ticket(city_code, bet_type_code, number_quantity, amount_wagered))
