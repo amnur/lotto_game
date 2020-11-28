@@ -27,7 +27,7 @@ class Payout:
 
     @staticmethod
     def calculate_payout(ticket):
-        if ticket.city.selected_city.lower() != 'tutte':
-            key = len(ticket.generated_numbers.generated_numbers)
-            value = Bet.bet_type_list.index(ticket.bet_type.selected_bet_type)
-            return float(ticket.amount_wagered * Payout.potential_payout[key][value])
+        key = len(ticket.generated_numbers.generated_numbers)
+        value = Bet.bet_type_list.index(ticket.bet_type.selected_bet_type)
+        payout = ticket.amount_wagered * Payout.potential_payout[key][value]
+        return float(payout) if ticket.city.selected_city.lower() != 'tutte' else float(payout/10)
