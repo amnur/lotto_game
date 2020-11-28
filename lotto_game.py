@@ -50,10 +50,8 @@ def main():
         extraction.results(lotto.tickets)
 
         other_tickets = input('\nPress 0 to quit or press any other key to generate new tickets.\t')
-        if other_tickets == '0':
-            quit()
-        else:
-            first_tickets = False
+        first_tickets = quit() if other_tickets == '0' else False
+
 
 if __name__ == '__main__':
     main()
