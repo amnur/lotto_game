@@ -1,5 +1,6 @@
 from lotto.bet import Bet
 
+
 class Payout:
     potential_payout = {
         1: [11.23],
@@ -18,10 +19,11 @@ class Payout:
     def max_wager_allowed(city_code, bet_type_code, number_quantity):
         max_payout_allowed = 6000000
         max_bet_allowed = 200
-        if city_code != 11:
-            potential_max_bet = max_payout_allowed//Payout.potential_payout[number_quantity][bet_type_code-1]
-            max_bet_allowed = potential_max_bet if potential_max_bet <= max_bet_allowed else max_bet_allowed
-            return max_bet_allowed
+        potential_max_bet = max_payout_allowed//Payout.potential_payout[number_quantity][bet_type_code-1]
+        if city_code == 11:
+            potential_max_bet = potential_max_bet * 10
+        max_bet_allowed = potential_max_bet if potential_max_bet <= max_bet_allowed else max_bet_allowed
+        return max_bet_allowed
 
     @staticmethod
     def calculate_payout(ticket):
