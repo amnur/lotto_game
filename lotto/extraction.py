@@ -27,6 +27,7 @@ class Extraction:
         print(extraction_table_line)
 
     def results(self, tickets):
+        total_payout = 0
         won = False
         for ticket in tickets:
             if ticket.city.selected_city.lower() == 'tutte':
@@ -47,6 +48,7 @@ class Extraction:
             for city in win_dict.keys():
                 if len(win_dict[city]) > Bet.bet_type_list.index(ticket.bet_type.selected_bet_type):
                     payout = Payout.calculate_payout(ticket)
+                    total_payout = total_payout + payout
                     print()
                     print(' {::^48} '.format('  CONGRATULATIONS! YOU WIN!  '))
                     print(' {:^48} '.format(str(round(payout, 2))+' €'))
@@ -61,4 +63,10 @@ class Extraction:
             print()
             print(print_line)
             print('+{:^48}+'.format('YOU LOSE!'))
+            print(print_line)
+        else:
+            print_line = '+' + '-' * 48 + '+'
+            print()
+            print(print_line)
+            print(' {:^48} '.format('TOTAL PAYOUT:\t'+str(round(total_payout, 2))+' €'))
             print(print_line)
