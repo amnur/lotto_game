@@ -57,14 +57,14 @@ class Lotto:
             max_fee_allowed = Fee.max_fee_allowed(city_code, bet_type_code, number_quantity)
 
             # SELECT AMOUNT TO BET
-            print('\nHow much do you want to bet?')
-            amount_wagered = input('\nMaximum allowed for this bet is {max_fee_allowed}\t')
+            print('How much do you want to bet?')
+            amount_wagered = input(f'Maximum allowed for this bet is {max_fee_allowed}.\t')
             # loop used to check the validity of the current number_quantity
             while True:
                 # number_quantity conversion to int type
                 try:
-                    if 1 <= int(amount_wagered) <= max_fee_allowed:
-                        amount_wagered = int(amount_wagered)
+                    if 1 <= float(amount_wagered) <= max_fee_allowed:
+                        amount_wagered = float(amount_wagered)
                         print(horizontal_line)
                         print()
                         break
@@ -75,6 +75,7 @@ class Lotto:
                     amount_wagered = input(f'Invalid choice! Choose number from 1 to {max_fee_allowed}.\t')
 
             print(max_fee_allowed)
+            print(amount_wagered)
 
             # CREATE A TICKET OBJECT AND INSERT IT IN THE LIST
             self.tickets.append(Ticket(city_code, bet_type_code, number_quantity, amount_wagered))
