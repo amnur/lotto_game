@@ -1,7 +1,7 @@
 from lotto.ticket import Ticket
 from lotto.city import City
 from lotto.bet import Bet
-from lotto.fee import Fee
+from lotto.payout import Payout
 
 
 # this class generates the amount of Ticket objects required from the user
@@ -54,28 +54,25 @@ class Lotto:
                     number_quantity = input(f'Invalid choice! Choose number from {bet_type_code} to {max_number}.\t')
 
             # calculate max fee allowed
-            max_fee_allowed = Fee.max_fee_allowed(city_code, bet_type_code, number_quantity)
+            max_wager_allowed = Payout.max_wager_allowed(city_code, bet_type_code, number_quantity)
 
             # SELECT AMOUNT TO BET
             print('How much do you want to bet?')
-            amount_wagered = input(f'Maximum allowed for this bet is {max_fee_allowed}.\t')
+            amount_wagered = input(f'Maximum allowed for this bet is {max_wager_allowed} euro.\t')
             # loop used to check the validity of the current number_quantity
             while True:
                 # number_quantity conversion to int type
                 try:
-                    if 1 <= float(amount_wagered) <= max_fee_allowed:
+                    if 1 <= float(amount_wagered) <= max_wager_allowed:
                         amount_wagered = float(amount_wagered)
                         print(horizontal_line)
                         print()
                         break
                     else:
-                        amount_wagered = input(f'Invalid choice! Must choose from 1 to {max_fee_allowed}.\t')
+                        amount_wagered = input(f'Invalid choice! Must choose from 1 to {max_wager_allowed} euro.\t')
                 # exception occurred selecting a non numerical value
                 except ValueError:
-                    amount_wagered = input(f'Invalid choice! Choose number from 1 to {max_fee_allowed}.\t')
-
-            print(max_fee_allowed)
-            print(amount_wagered)
+                    amount_wagered = input(f'Invalid choice! Choose number from 1 to {max_wager_allowed} euro.\t')
 
             # CREATE A TICKET OBJECT AND INSERT IT IN THE LIST
             self.tickets.append(Ticket(city_code, bet_type_code, number_quantity, amount_wagered))

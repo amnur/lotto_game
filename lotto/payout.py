@@ -1,6 +1,6 @@
 from lotto.bet import Bet
 
-class Fee:
+class Payout:
     potential_payout = {
         1: [11.23],
         2: [5.62, 250],
@@ -15,17 +15,17 @@ class Fee:
     }
 
     @staticmethod
-    def max_fee_allowed(city_code, bet_type_code, number_quantity):
+    def max_wager_allowed(city_code, bet_type_code, number_quantity):
         max_payout_allowed = 6000000
-        max_fee_allowed = 200
+        max_bet_allowed = 200
         if city_code != 11:
-            max_fee_bet = max_payout_allowed//Fee.potential_payout[number_quantity][bet_type_code-1]
-            max_fee_allowed = max_fee_bet if max_fee_bet <= max_fee_allowed else max_fee_allowed
-            return max_fee_allowed
+            potential_max_bet = max_payout_allowed//Payout.potential_payout[number_quantity][bet_type_code-1]
+            max_bet_allowed = potential_max_bet if potential_max_bet <= max_bet_allowed else max_bet_allowed
+            return max_bet_allowed
 
     @staticmethod
     def calculate_payout(ticket):
         if ticket.city.selected_city.lower() != 'tutte':
             key = len(ticket.generated_numbers.generated_numbers)
             value = Bet.bet_type_list.index(ticket.bet_type.selected_bet_type)
-            return int(ticket.amount_wagered * ticket.amount_wagered*Fee.potential_payout[key][value])
+            return float(ticket.amount_wagered * Payout.potential_payout[key][value])
