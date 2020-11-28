@@ -4,6 +4,7 @@ from lotto.extraction import Extraction
 
 
 def main():
+    first_tickets = True
     while True:
         parser = argparse.ArgumentParser(description='lotto game')
         parser.add_argument('-n', type=int, help='number of tickets')
@@ -15,7 +16,7 @@ def main():
         max_tickets = 5
         print('\n\n{::^50}'.format(' WELCOME TO THE ITALIAN LOTTO GAME '))
         # check if the user has choose correctly the amount of tickets to generate
-        if tickets_quantity is None or tickets_quantity < 0 or tickets_quantity > max_tickets:
+        if tickets_quantity is None or tickets_quantity < 0 or tickets_quantity > max_tickets or not first_tickets:
             tickets_quantity = input(f'\nSelect the amount of tickets to generate(max {max_tickets}).\nPress 0 to quit.\t')
             while True:
                 try:
@@ -51,7 +52,8 @@ def main():
         other_tickets = input('\nPress 0 to quit or press any other key to generate new tickets.\t')
         if other_tickets == '0':
             quit()
-
+        else:
+            first_tickets = False
 
 if __name__ == '__main__':
     main()
