@@ -11,7 +11,6 @@ class Ticket:
         self.amount_wagered = amount_wagered
 
     def print_ticket(self):
-        print()
         table_line = '+'+'-'*48+'+'
         print(table_line)
         print('|{:^48}|'.format('TICKET'))
