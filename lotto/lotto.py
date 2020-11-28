@@ -20,15 +20,17 @@ class Lotto:
             print('{:^50}'.format(f'TICKET {i+1}'))
             print(horizontal_line)
 
+            # CITY SELECTION
             # City static method invocation to start selecting city
             city_code = City.choose_city_code()
 
             print(horizontal_line)
 
+            # BET TYPE SELECTION
             # Bet static method invocation to start selecting bet type
             bet_type_code = Bet.choose_bet_type_code()
 
-            # start to select the quantity of numbers
+            # QUANTITY OF NUMBER SELECTION
             max_number = 10
             print(horizontal_line)
             print('How many numbers do you want to play?')
@@ -49,4 +51,6 @@ class Lotto:
                 # exception occurred selecting a non numerical value
                 except ValueError:
                     number_quantity = input(f'Invalid choice! Choose number from {bet_type_code} to {max_number}.\t')
+
+            # CREATE A TICKET OBJECT AND INSERT IT IN THE LIST
             self.tickets.append(Ticket(city_code, bet_type_code, number_quantity))

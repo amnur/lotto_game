@@ -4,7 +4,9 @@ from lotto.extraction import Extraction
 
 
 def main():
+    # let the user choose n° of tickets to generate when he launch the program with argparse argument -n
     first_tickets = True
+
     while True:
         parser = argparse.ArgumentParser(description='lotto game')
         parser.add_argument('-n', type=int, help='number of tickets')
@@ -17,7 +19,8 @@ def main():
         print('\n\n{::^50}'.format(' WELCOME TO THE ITALIAN LOTTO GAME '))
         # check if the user has choose correctly the amount of tickets to generate
         if tickets_quantity is None or tickets_quantity < 0 or tickets_quantity > max_tickets or not first_tickets:
-            tickets_quantity = input(f'\nSelect the amount of tickets to generate(max {max_tickets}).\nPress 0 to quit.\t')
+            tickets_quantity = input(f'\nSelect amount of tickets to generate(max {max_tickets}).\nPress 0 to quit.\t')
+            # loop is executed until user inserts valid amount of tickets to generate
             while True:
                 try:
                     if int(tickets_quantity) == 0:
@@ -30,7 +33,7 @@ def main():
                         tickets_quantity = input('Invalid selection! Retry\nselected: ')
                 # exception occurred in case the user insert literal value
                 except ValueError:
-                    tickets_quantity = input('Invalid choice! Choose number from 1 to %s. Press 0 to quit.\t' % max_tickets)
+                    tickets_quantity = input(f'Invalid choice! Choose n° from 1 to {max_tickets}. Press 0 to quit.\t')
 
         # tickets_generator return a list of Ticket objects
         lotto = Lotto(tickets_quantity)
@@ -47,6 +50,7 @@ def main():
 
         input('\nPress any key to see winner tickets.\t')
 
+        # print winner tickets
         extraction.results(lotto.tickets)
 
         other_tickets = input('\nPress 0 to quit or press any other key to generate new tickets.\t')
