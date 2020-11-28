@@ -1,6 +1,7 @@
 from lotto.ticket import Ticket
 from lotto.city import City
 from lotto.bet import Bet
+from lotto.fee import Fee
 
 
 # this class generates the amount of Ticket objects required from the user
@@ -51,6 +52,9 @@ class Lotto:
                 # exception occurred selecting a non numerical value
                 except ValueError:
                     number_quantity = input(f'Invalid choice! Choose number from {bet_type_code} to {max_number}.\t')
+
+            max_fee_allowed = Fee.max_fee_allowed(city_code, bet_type_code, number_quantity)
+            print(max_fee_allowed)
 
             # CREATE A TICKET OBJECT AND INSERT IT IN THE LIST
             self.tickets.append(Ticket(city_code, bet_type_code, number_quantity))
