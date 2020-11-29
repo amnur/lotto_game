@@ -58,7 +58,7 @@ class Lotto:
 
             # SELECT AMOUNT TO BET
             print('How much do you want to bet?')
-            amount_wagered = input(f'Maximum allowed for this bet is {max_wager_allowed} euro.\t')
+            amount_wagered = input(f'Minimum allowed is 1 €. Maximum allowed for this bet is {max_wager_allowed} €.\t')
             # loop used to check the validity of the current number_quantity
             while True:
                 # number_quantity conversion to int type
@@ -69,10 +69,10 @@ class Lotto:
                         print()
                         break
                     else:
-                        amount_wagered = input(f'Invalid choice! Must choose from 1 to {max_wager_allowed} euro.\t')
+                        amount_wagered = input(f'Invalid choice! Must choose from 1 to {max_wager_allowed} €.\t')
                 # exception occurred selecting a non numerical value
                 except ValueError:
-                    amount_wagered = input(f'Invalid choice! Choose number from 1 to {max_wager_allowed} euro.\t')
+                    amount_wagered = input(f'Invalid choice! Choose number from 1 to {max_wager_allowed} €.\t')
 
             # CREATE A TICKET OBJECT AND INSERT IT IN THE LIST
             self.tickets.append(Ticket(city_code, bet_type_code, number_quantity, amount_wagered))
