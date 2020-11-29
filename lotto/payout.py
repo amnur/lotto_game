@@ -37,7 +37,8 @@ class Payout:
     """
     For each ticket, calculate_payout takes the quantity of number generated and the bet type index and calculates the 
     payout using these values respectively as key and index of the value list inside potential_payout and multiplying 
-    the value for the amount wagered. If the selected city is 'Tutte', the payout is divided by 10. """
+    the value for the amount wagered. If the selected city is 'Tutte', the payout is divided by 10.
+    """
     @staticmethod
     def calculate_payout(ticket):
         key = len(ticket.generated_numbers.generated_numbers)
