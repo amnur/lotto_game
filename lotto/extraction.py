@@ -46,8 +46,9 @@ class Extraction:
                         win_list.append(number)
                 win_dict[ticket.city.selected_city] = win_list
             for city in win_dict.keys():
-                if len(win_dict[city]) > Bet.bet_type_list.index(ticket.bet_type.selected_bet_type):
-                    payout = Payout.calculate_payout(ticket)
+                bet_type_code = Bet.bet_type_list.index(ticket.bet_type.selected_bet_type) + 1
+                if len(win_dict[city]) >= bet_type_code:
+                    payout = Payout.calculate_payout(ticket) * (len(win_dict[city]) // bet_type_code)
                     total_payout = total_payout + payout
                     print()
                     print(' {::^48} '.format('  CONGRATULATIONS! YOU WIN!  '))
