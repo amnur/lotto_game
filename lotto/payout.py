@@ -2,6 +2,12 @@ from lotto.bet import Bet
 
 
 class Payout:
+    """
+    - keys represents quantity of number generated for each ticket
+    - each element of the list represents the potential payout for each bet type with that quantity of number generated
+      ['ambata', 'ambo', 'terna', 'quaterna', 'cinquina'].
+      If the selected city is 'Tutte' each potential payout must be divided by 10.
+    """
     potential_payout = {
         1: [11.23],
         2: [5.62, 250],
@@ -15,16 +21,23 @@ class Payout:
         10: [1.12, 5.56, 37.50, 571.43, 23809.52]
     }
 
+    """
+    max_wager_allowed calculates the max bet allowed in order to avoid the user to win more than the max payout allowed
+    which is 6 millions. This value can't be more than 200 €.
+    """
     @staticmethod
     def max_wager_allowed(city_code, bet_type_code, number_quantity):
         max_payout_allowed = 6000000
         max_bet_allowed = 200
         potential_max_bet = max_payout_allowed//Payout.potential_payout[number_quantity][bet_type_code-1]
-        if city_code == 11:
-            potential_max_bet = potential_max_bet * 10
+        potential_max_bet = potential_max_bet * 10 if city_code == 11 else potential_max_bet
         max_bet_allowed = potential_max_bet if potential_max_bet <= max_bet_allowed else max_bet_allowed
         return max_bet_allowed
 
+    """
+    For each ticket, calculate_payout takes the quantity of number generated and the bet type index and calculates the 
+    payout using these values respectively as key and index of the value list inside potential_payout and multiplying 
+    the value for the amount wagered. If the selected city is 'Tutte', the payout is divided by 10. """
     @staticmethod
     def calculate_payout(ticket):
         key = len(ticket.generated_numbers.generated_numbers)
